@@ -19,8 +19,8 @@ jobs:
       - name: FTP传输
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp://39.106.12.101
+          protocol: 'ftp'
+          server: ftp://39.106.12.101:21
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          CI: true
+          server-dir: '/'
