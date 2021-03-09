@@ -1,0 +1,26 @@
+name: Taoya CI
+
+on: 
+  push: 
+    branches:
+      - master
+
+jobs: 
+  build:
+    name: 🎉 Develoy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@master
+
+      - name: 展示输出文件
+        run: ls
+
+      - name: FTP传输
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ftp://39.106.12.101
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          CI: true
